@@ -1,3 +1,3 @@
 # consts
 
-simple syntax for declaration `const` `strings.
+simple syntax for declaration `const` strings.
