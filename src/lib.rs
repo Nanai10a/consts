@@ -1,7 +1,14 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
+#[macro_export]
+macro_rules! consts {
+    () => {};
+    ($i:ident : $l:literal; $( $t:tt )*) => {
+        const $i: &'static str = $l;
+        consts! { $( $t )* }
+    };
+    ($m:ident { $( $t1:tt )* } $( $t2:tt )*) => {
+        pub mod $m {
+            consts! { $( $t1 )* }
+        }
+        consts! { $( $t2 )* }
+    };
 }
