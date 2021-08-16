@@ -2,7 +2,7 @@
 macro_rules! consts {
     () => {};
     ($i:ident : $l:literal; $( $t:tt )*) => {
-        const $i: &'static str = $l;
+        pub const $i: &'static str = $l;
         consts! { $( $t )* }
     };
     ($m:ident { $( $t1:tt )* } $( $t2:tt )*) => {
@@ -12,3 +12,5 @@ macro_rules! consts {
         consts! { $( $t2 )* }
     };
 }
+
+mod test;
